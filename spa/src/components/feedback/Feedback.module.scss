@@ -1,0 +1,22 @@
+.feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+
+    > i { 
+        font-size: 48px;
+        color: var(--accent-color);
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1.4em;
+    }
+
+    .content {
+        color: var(--gray-color);
+    }
+}

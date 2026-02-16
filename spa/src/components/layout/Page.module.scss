@@ -1,0 +1,48 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--background-offset-color);
+
+    .title {
+        flex: 1;
+
+        h1 { 
+            margin: 0 0 5px 0;
+            font-size: 2.4em;
+            font-weight: 400;
+        }
+
+        p { 
+            margin: 0;
+            color: var(--gray-color);
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: flex-end;
+
+        input[type="search"] {
+            padding: 15px 25px;
+            border-radius: 999px;
+        }
+    }
+}
+
+.content {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

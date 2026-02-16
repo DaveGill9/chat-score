@@ -1,0 +1,43 @@
+.select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    background-color: var(--background-offset-color);
+    border-radius: 10px;
+
+    > i, > button > i {
+        font-size: 20px;
+    }
+
+    >span {
+        flex: 1;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.selectMenu {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    padding: 5px;
+    max-height: 240px;
+    overflow-y: auto;
+
+    >button {
+        padding: 15px;
+        border-radius: 5px;
+
+        &:hover,
+        &.selected {
+            background-color: var(--background-offset-color);
+
+        }
+    }
+}

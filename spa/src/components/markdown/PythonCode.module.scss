@@ -1,0 +1,42 @@
+.code {
+    background-color: #343232;
+    color: #e5e3e3;
+    border-radius: 10px;
+    overflow: hidden;
+
+    strong {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #575656;
+        color: #b4b1b1;
+        padding: 8px 13px; 
+        font-size: 10px;
+        text-transform: uppercase;
+
+        span { flex: 1 }
+
+        &.headerClosed {
+            background-color: var(--background-offset-color);
+            color: var(--gray-color);
+        }
+
+        button {
+            color: #b4b1b1;
+            transition: color 0.2s ease-in-out;
+
+            &:hover {
+                color: #e5e3e3;
+            }
+        }
+    }
+
+    pre {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12px;
+        line-height: 1.5;
+        overflow-x: auto;
+    }
+}

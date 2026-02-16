@@ -1,0 +1,9 @@
+.error {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background-color: rgba(var(--red-color-rgb), 0.1);
+    border-left: solid 2px var(--red-color);
+    font-size: 0.75em;
+    color: var(--red-color);
+}

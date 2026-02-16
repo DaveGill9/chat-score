@@ -1,0 +1,35 @@
+.iconButton {
+    position: relative;
+    background: none;
+    border: 0;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+
+    > i {
+        display: block;
+    }
+
+    &:hover {
+        color: var(--accent-color) !important;
+    }
+
+    &.working {
+        color: transparent;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    &.disabled {
+        > i { color: rgba(var(--gray-color-rgb), 0.3) !important }
+        pointer-events: none;
+    }
+
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

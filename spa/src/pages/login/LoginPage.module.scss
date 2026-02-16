@@ -1,0 +1,41 @@
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-offset-color);
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 100px;
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 20px;
+    gap: 10px;
+
+    img { 
+        width: 60px;
+        margin-bottom: 20px;
+    }
+
+    h1 { 
+        font-size: 24px;
+        font-weight: 300;
+        margin: 0;
+    }
+
+    .prompt {
+        margin: 0;
+    }
+    
+    .loginButton {
+        margin: 30px 0 0 0;
+        button { width: 100% }
+    }
+}

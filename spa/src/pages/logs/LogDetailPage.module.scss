@@ -1,0 +1,41 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 2em 0;
+
+    strong {
+        font-weight: 500;
+        font-size: .8em;
+        text-transform: uppercase;
+        color: var(--gray-color);
+    }
+
+    pre {
+        margin: 0;
+    }
+
+    img {
+        display: block;
+        border-radius: 10px;
+    }
+}
+
+.meta {
+    border: solid 1px var(--background-offset-color);
+    border-radius: 10px;
+    display: flex;
+
+    > div {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        border-right: solid 1px var(--background-offset-color);
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}

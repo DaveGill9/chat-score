@@ -1,0 +1,18 @@
+.deleteButton {
+    background-color: var(--red-color);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.preview {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: solid 1px var(--background-offset-color);
+    margin-bottom: 10px;
+}

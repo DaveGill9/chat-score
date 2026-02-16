@@ -1,0 +1,23 @@
+.table {
+    width: 100%;
+    overflow-x: auto;
+
+    >table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid var(--background-offset-color);
+    }
+
+    >table td {
+        padding: 10px;
+        border: 1px solid var(--background-offset-color);
+    }
+
+    >table th {
+        text-align: left;
+        padding: 10px;
+        border: 1px solid var(--background-offset-color);
+        background: rgba(var(--background-offset-color-rgb), 0.5);
+        white-space: nowrap;
+    }
+}

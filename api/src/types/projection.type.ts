@@ -1,0 +1,1 @@
+export type Projection = Record<string, 1 | 0 | { $meta: 'textScore' }>;

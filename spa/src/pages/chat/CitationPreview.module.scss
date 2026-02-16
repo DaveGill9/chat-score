@@ -1,0 +1,101 @@
+@use "../../styles/mixins.scss" as *;
+
+.citation {
+    flex: 0 0 0px;
+    background: rgba(var(--background-offset-color-rgb), 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: flex 0.3s ease-in-out;
+
+    > div {
+        position: relative; 
+        width: 350px;
+        right: -20px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    &.open {
+        flex: 0 0 350px;
+
+        > div {
+            right: 0;
+            opacity: 1;
+        }
+    }
+
+    @include mobile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: 100;
+
+        &.open, > div {
+            width: 100vw;
+        }
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        small { 
+            text-transform: uppercase;
+            color: var(--gray-color);
+            font-weight: 500;
+        }
+    }
+
+    .content {
+
+        > strong {
+            font-size: 1.4em;
+        }
+
+        .pageNumber {
+            background: var(--background-color);
+        }
+
+        line-height: 1.5;
+
+        > h2 {
+            font-size: .8em;
+            text-transform: uppercase;
+            color: var(--gray-color);
+        }
+
+        h3 {
+            font-size: 1em;
+            color: var(--primary-color);
+        }
+
+        p > img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: solid 1px var(--background-offset-color);
+            margin: 1em 0;
+        }
+
+        > img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: solid 1px var(--background-offset-color);
+            margin-bottom: 10px;
+        }
+
+        .viewDocument {
+            margin-top: 30px;
+            width: 100%;
+        }
+    }
+}

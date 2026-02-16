@@ -1,0 +1,13 @@
+.popover {
+    position: fixed;
+    z-index: 1000;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 var(--box-shadow-color);
+
+    > ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}

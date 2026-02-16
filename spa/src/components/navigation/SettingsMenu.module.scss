@@ -1,0 +1,44 @@
+.button {
+    padding: 10px 0;
+
+    &.active>i {
+        color: var(--accent-color);
+    }
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 180px;
+
+    .theme,
+    .logout {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .theme {
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: var(--gray-color);
+            gap: 10px;
+            width: 100%;
+            transition: color 0.2s ease-in-out;
+
+            &.active,
+            &:hover {
+                color: var(--text-color);
+
+                >i {
+                    color: var(--accent-color);
+                }
+            }
+        }
+    }
+}

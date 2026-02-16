@@ -1,0 +1,72 @@
+@mixin light-theme {
+    color-scheme: light;
+  
+    --text-color-rgb: 3, 4, 39;
+    --text-color: rgb(var(--text-color-rgb));
+    
+    --gray-color-rgb: 81, 86, 100;
+    --gray-color: rgb(var(--gray-color-rgb));
+
+    --background-offset-color-rgb: 244, 242, 244;
+    --background-offset-color: rgb(var(--background-offset-color-rgb));
+
+    --background-color-rgb: 255, 255, 255;
+    --background-color: rgb(var(--background-color-rgb));
+  
+    --box-shadow-color: rgba(0, 0, 0, .1);
+    --system-scrollbar: rgba(0, 0, 0, .25);
+  }
+  
+  @mixin dark-theme {
+    color-scheme: dark;
+  
+    --text-color-rgb: 244, 229, 246;
+    --text-color: rgb(var(--text-color-rgb));
+
+    --gray-color-rgb: 119, 93, 122;
+    --gray-color: rgb(var(--gray-color-rgb));
+
+    --background-offset-color-rgb: 67, 37, 70;
+    --background-offset-color: rgb(var(--background-offset-color-rgb));
+
+    --background-color-rgb: 36, 3, 39;
+    --background-color: rgb(var(--background-color-rgb));
+  
+    --box-shadow-color: rgba(0, 0, 0, .9);
+    --system-scrollbar: rgba(255, 255, 255, .2);
+  }
+  
+  :root {
+
+    // Brand Colors
+    --primary-color-rgb:  50, 95, 231;
+    --primary-color: rgb(var(--primary-color-rgb));
+
+    --accent-color-rgb: 213, 62, 130;
+    --accent-color: rgb(var(--accent-color-rgb));
+  
+    // Traffic Light Colors
+    --green-color-rgb: 0, 192, 139;
+    --green-color: rgb(var(--green-color-rgb));
+
+    --orange-color-rgb: 244, 116, 37;
+    --orange-color: rgb(var(--orange-color-rgb));
+
+    --red-color-rgb: 236, 87, 62;
+    --red-color: rgb(var(--red-color-rgb));
+  
+    // Apply the theme based on the user's system preference
+    body:not(.dark) {
+      @include light-theme;
+    }
+  
+    body.dark {
+      @include dark-theme;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      body:not(.light) {
+        @include dark-theme;
+      }
+    }
+  }
