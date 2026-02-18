@@ -4,7 +4,7 @@ import * as XLSX from 'xlsx';
 import type { RawRow, TestRow } from '../types/test.types';
 
 @Injectable()
-export class FileParserService {
+export class ParserService {
   parseRawBuffer(buffer: Buffer, filename: string): RawRow[] {
     const ext = this.getExt(filename);
     if (ext === 'xlsx' || ext === 'xls') {
