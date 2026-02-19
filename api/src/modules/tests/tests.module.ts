@@ -6,6 +6,7 @@ import { TestRun, TestRunSchema } from './entities/test-run.entity';
 import { Result, ResultSchema } from './entities/result.entity';
 import { ParserService } from './services/parser.service';
 import { BotClientService } from './services/bot-client.service';
+import { ScoreService } from './services/score.service';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { BotClientService } from './services/bot-client.service';
     ]),
   ],
   controllers: [],
-  providers: [ParserService, BotClientService],
-  exports: [MongooseModule, ParserService, BotClientService],
+  providers: [ParserService, BotClientService, ScoreService],
+  exports: [MongooseModule, ParserService, BotClientService, ScoreService],
 })
 export class TestsModule {}
