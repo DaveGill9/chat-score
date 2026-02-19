@@ -1,10 +1,13 @@
 services:
   mongodb:
     image: mongo:7
+    container_name: chatqa-mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=chatqa
     ports:
       - "27017:27017"
     volumes:
-      - mongodb_data:/data/db
+      - chatqa_mongodb_data:/data/db
 
 volumes:
-  mongodb_data:
+  chatqa_mongodb_data:

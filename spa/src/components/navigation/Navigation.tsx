@@ -41,7 +41,7 @@ const Navigation = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement
     <nav className={classNames} {...props} onScroll={handleScroll}>
 
       <div className={styles.logo}>
-        <span>Chat Jumpstart</span>
+        <span>ChatQA</span>
       </div>
 
       <div className={styles.menu}>

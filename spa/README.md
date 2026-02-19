@@ -1,6 +1,6 @@
-# Chat Jumpstart - Single Page Application (SPA)
+# ChatQA - Single Page Application (SPA)
 
-A modern React-based single page application built with Vite, TypeScript, and SCSS. This SPA provides the user interface for the Chat Jumpstart platform, featuring AI-powered chat, document management, and real-time updates via WebSocket.
+A modern React-based single page application built with Vite, TypeScript, and SCSS. This SPA provides the user interface for the ChatQA platform, featuring AI-powered chat, document management, and real-time updates via WebSocket.
 
 ## 📋 Table of Contents
 
@@ -17,7 +17,7 @@ A modern React-based single page application built with Vite, TypeScript, and SC
 
 ## 🎯 Overview
 
-The SPA is a production-ready React application that serves as the frontend for the Chat Jumpstart platform. It provides a responsive, accessible interface for users to interact with AI-powered chat, manage documents, and view system logs.
+The SPA is a production-ready React application that serves as the frontend for the ChatQA platform. It provides a responsive, accessible interface for users to interact with AI-powered chat, manage documents, and view system logs.
 
 ### Key Capabilities
 

@@ -1,4 +1,4 @@
-# Chat Jumpstart 🚀
+# ChatQA 🚀
 
 A production-ready, full-stack chat application with AI-powered document processing and retrieval-augmented generation (RAG). Built as a monorepo with NestJS backend, React frontend, and Azure cloud services integration.
 
@@ -20,7 +20,7 @@ A production-ready, full-stack chat application with AI-powered document process
 
 ## 🎯 Overview
 
-Chat Jumpstart is a comprehensive chat application designed to serve as a starting point for building AI-powered conversational interfaces. It combines document processing, vector search, and streaming chat capabilities to deliver a complete RAG (Retrieval-Augmented Generation) solution.
+ChatQA is a comprehensive chat application designed to serve as a starting point for building AI-powered conversational interfaces. It combines document processing, vector search, and streaming chat capabilities to deliver a complete RAG (Retrieval-Augmented Generation) solution.
 
 ### Key Capabilities
 
@@ -183,7 +183,7 @@ Chat Jumpstart is a comprehensive chat application designed to serve as a starti
 ## 📁 Project Structure
 
 ```
-chat-jumpstart/
+chatqa/
 ├── api/                    # NestJS REST API + WebSocket Gateway
 │   ├── src/
 │   │   ├── modules/        # Feature modules
@@ -265,7 +265,7 @@ This project uses the following Azure services. They are provisioned automatical
 
 ```bash
 git clone <repository-url>
-cd chat-jumpstart
+cd chatqa
 ```
 
 ### 2. Install Dependencies
@@ -333,7 +333,7 @@ MSAL_AUDIENCE=your-azure-ad-app-client-id
 # ============================================
 # Database
 # ============================================
-MONGODB_URI=mongodb://localhost:27017/chat-jumpstart
+MONGODB_URI=mongodb://localhost:27017/chatqa
 # Or for Azure Cosmos DB:
 # MONGODB_URI=mongodb://account.mongo.cosmos.azure.com:10255/db?ssl=true&replicaSet=globaldb
 
@@ -494,7 +494,7 @@ cd api
 npm run build
 
 # Build Docker image
-docker build -t chat-jumpstart-api .
+docker build -t chatqa-api .
 
 # Or deploy using Azure CLI or VS Code Azure extension
 ```

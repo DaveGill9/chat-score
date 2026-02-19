@@ -21,7 +21,7 @@ export default function LoginPage() {
         <div className={styles.loginPage}>
             <div className={styles.login}>
                 <img src="/logo.svg" />
-                <h1>Chat Jumpstart</h1>
+                <h1>ChatQA</h1>
                 <p className={styles.prompt}>
                     <strong>Sign in</strong> to continue
                 </p>              
