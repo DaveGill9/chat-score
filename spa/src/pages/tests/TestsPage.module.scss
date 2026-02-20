@@ -1,27 +1,116 @@
 .testSet {
-  display: flex;
+  display: grid;
+  grid-template-columns: 28px minmax(220px, 1fr) minmax(140px, 0.8fr) 120px 220px;
   align-items: center;
   width: 100%;
-  gap: 10px;
-  padding: 15px 30px;
+  gap: 12px;
+  padding: 14px 20px;
   border-bottom: 1px solid var(--background-offset-color);
 
   i {
     color: var(--primary-color);
   }
 
-  strong {
-    flex: 1;
-  }
-
-  span,
-  small {
+  span {
     color: var(--gray-color);
   }
 
   &:hover {
     background-color: rgba(var(--gray-color-rgb), 0.05);
   }
+}
+
+.listHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 28px minmax(220px, 1fr) minmax(140px, 0.8fr) 120px 220px;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--background-color);
+  border-bottom: 1px solid var(--background-offset-color);
+}
+
+.headerButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.85em;
+  color: var(--gray-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-color);
+  }
+}
+
+.headerButton.countCell,
+.headerButton.dateCell {
+  justify-content: flex-end;
+}
+
+.sortIndicator {
+  color: var(--primary-color);
+  font-size: 0.9em;
+}
+
+.iconCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+
+  strong {
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.85em;
+  }
+}
+
+.projectCell {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--gray-color);
+}
+
+.countCell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--gray-color);
+}
+
+.dateCell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--gray-color);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--gray-color);
 }
 
 .active {
@@ -36,6 +125,17 @@
 .list {
   flex: 1;
   overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .testSet,
+  .listHeader {
+    grid-template-columns: 28px minmax(200px, 1fr) 110px 180px;
+  }
+
+  .projectCell {
+    display: none;
+  }
 }
 
 .preview {

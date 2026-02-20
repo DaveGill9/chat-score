@@ -36,7 +36,7 @@ export class TestsService {
     const cases = rows.map((row: TestRow, index) => {
       const { id, input, expected, actual, score, reasoning, ...extras } = row;
       return {
-        testSetId: createdSet._id,
+        testSetId: String(createdSet._id),
         id: String(id || index + 1),
         input: String(input),
         expected: String(expected),
@@ -78,7 +78,26 @@ export class TestsService {
       .skip(offset)
       .limit(limit)
       .lean();
-    return sets;
+
+    const setIds = sets.map((set) => set._id);
+    const setIdStrings = setIds.map((id) => String(id));
+    const counts = setIds.length
+      ? await this.testCaseModel.aggregate<{ _id: unknown; testCaseCount: number }>([
+          {
+            $match: {
+              $or: [{ testSetId: { $in: setIdStrings } }, { testSetId: { $in: setIds as unknown[] } }],
+            },
+          },
+          { $group: { _id: '$testSetId', testCaseCount: { $sum: 1 } } },
+        ])
+      : [];
+
+    const countBySetId = new Map(counts.map((item) => [String(item._id), item.testCaseCount]));
+
+    return sets.map((set) => ({
+      ...set,
+      testCaseCount: countBySetId.get(String(set._id)) ?? 0,
+    }));
   }
 
   async getTestSet(testSetId: string) {
@@ -88,7 +107,7 @@ export class TestsService {
     }
 
     const cases = await this.testCaseModel
-      .find({ testSetId: set._id })
+      .find({ testSetId: { $in: [String(set._id), set._id as unknown] } })
       .sort({ createdAt: 1 })
       .lean();
 
@@ -106,7 +125,7 @@ export class TestsService {
     }
 
     const cases = await this.testCaseModel
-      .find({ testSetId: set._id })
+      .find({ testSetId: { $in: [String(set._id), set._id as unknown] } })
       .sort({ createdAt: 1 })
       .lean();
 
@@ -196,7 +215,7 @@ export class TestsService {
     }
 
     const cases = await this.testCaseModel
-      .find({ testSetId: run.testSetId })
+      .find({ testSetId: { $in: [String(run.testSetId), run.testSetId as unknown] } })
       .sort({ createdAt: 1 })
       .lean();
 
