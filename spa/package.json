@@ -15,18 +15,13 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.24",
-    "incomplete-json-parser": "^1.1.4",
-    "mermaid": "^11.12.1",
     "nanoid": "^5.1.6",
-    "papaparse": "^5.5.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.9.5",
     "remark-breaks": "^4.0.0",
-    "remark-gfm": "^4.0.1",
-    "socket.io-client": "^4.8.1",
-    "xlsx": "^0.18.5"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
