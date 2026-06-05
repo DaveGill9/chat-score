@@ -189,7 +189,7 @@ This runs TypeScript project builds and then Vite production bundling.
 - `framer-motion` for transitions and animated detail panels
 - `date-fns` for date formatting
 - `vite-plugin-pwa` for service worker and update flow
-- `mermaid`, `papaparse`, and `xlsx` are installed for rendering/export and file-related UI flows
+- `embla-carousel-react`, `react-markdown`, and remark plugins for result review
 
 ## Project Structure
 
