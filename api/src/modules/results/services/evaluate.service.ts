@@ -12,6 +12,7 @@ export type EvaluationResult = {
   whatWentWrong: string[];
   patterns: string[];
   suggestions: string[];
+  promptChanges: string[];
 };
 
 @Injectable()
@@ -103,10 +104,13 @@ Analyze the results and return a JSON object with these exact keys:
   "whatWentWell": ["item1", "item2", ...],
   "whatWentWrong": ["item1", "item2", ...],
   "patterns": ["specific recurring patterns that were consistently wrong", ...],
-  "suggestions": ["actionable suggestions: e.g. 'Adjust system prompt to...', 'Review knowledge base for topic X', 'Add examples for edge case Y'", ...]
+  "suggestions": ["general actionable suggestions, such as reviewing knowledge base topic X or adding examples for edge case Y", ...],
+  "promptChanges": ["specific chatbot prompt change, written as a concrete instruction or snippet to add/update", ...]
 }
 
-Be specific. Reference actual inputs/topics when you see patterns. Focus suggestions on: system prompt changes, specific files or topics to review, edge cases to add to the test set.
+Be specific. Reference actual inputs/topics when you see patterns.
+Keep "suggestions" focused on process, knowledge, and test-set improvements.
+Keep "promptChanges" focused only on concrete changes to the chatbot's system or developer prompt that would address recurring failures.
 Return ONLY valid JSON, no markdown.`;
 
     const resp = await this.client.chat.completions.create({
@@ -132,6 +136,7 @@ Return ONLY valid JSON, no markdown.`;
       whatWentWrong: Array.isArray(parsed.whatWentWrong) ? parsed.whatWentWrong : [],
       patterns: Array.isArray(parsed.patterns) ? parsed.patterns : [],
       suggestions: Array.isArray(parsed.suggestions) ? parsed.suggestions : [],
+      promptChanges: Array.isArray(parsed.promptChanges) ? parsed.promptChanges : [],
     };
   }
 }
