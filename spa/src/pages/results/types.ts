@@ -23,4 +23,5 @@ export type Evaluation = {
   whatWentWrong?: string[];
   patterns?: string[];
   suggestions?: string[];
+  promptChanges?: string[];
 };
