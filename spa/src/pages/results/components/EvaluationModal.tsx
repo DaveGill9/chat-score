@@ -65,6 +65,16 @@ export default function EvaluationModal({ visible, onClose, evaluation, loading 
                 </ul>
               </section>
             )}
+            {evaluation.promptChanges && evaluation.promptChanges.length > 0 && (
+              <section className={styles.evalSection}>
+                <h3>Suggested prompt changes</h3>
+                <ul>
+                  {evaluation.promptChanges.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
             {evaluation.suggestions && evaluation.suggestions.length > 0 && (
               <section className={styles.evalSection}>
                 <h3>Suggestions</h3>
