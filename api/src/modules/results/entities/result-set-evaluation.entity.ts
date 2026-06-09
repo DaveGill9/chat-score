@@ -27,6 +27,9 @@ export class ResultSetEvaluation extends BaseEntity {
   @Prop()
   suggestions?: string[];
 
+  @Prop()
+  promptChanges?: string[];
+
   @Prop({ type: Object })
   raw?: Record<string, unknown>;
 }
