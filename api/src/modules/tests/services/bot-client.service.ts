@@ -14,6 +14,7 @@ export class BotClientService {
   private readonly inputField: string;
   private readonly answerField: string;
   private readonly threadIdField: string;
+  private readonly timeoutMs: number;
 
   constructor(private readonly configService: ConfigService) {
     this.endpointUrl = this.configService.getOrThrow<string>('CHATBOT_URL');
@@ -21,19 +22,20 @@ export class BotClientService {
     this.inputField = this.configService.get<string>('CHATBOT_FIELD', 'message');
     this.answerField = this.configService.get<string>('CHATBOT_ANSWER_FIELD', 'answer');
     this.threadIdField = this.configService.get<string>('CHATBOT_THREAD_ID_FIELD', 'threadId');
+    this.timeoutMs = this.getPositiveIntConfig('CHATBOT_TIMEOUT_MS', 60000);
   }
 
   getExtras(row: TestRow): Record<string, unknown> {
+    return this.getRequestContext(row);
+  }
+
+  getRequestContext(row: TestRow): Record<string, unknown> {
     const { id, input, expected, actual, score, reasoning, ...extras } = row;
     return extras;
   }
 
   async callEndpoint(row: TestRow): Promise<ChatResponse> {
-    const body = {
-      [this.inputField]: row.input,
-      ...this.getExtras(row),
-    };
-    return this.post(body);
+    return this.post(this.buildRequestBody(row.input, this.getRequestContext(row)));
   }
 
   async sendFollowup(
@@ -41,14 +43,27 @@ export class BotClientService {
     threadId: string | undefined,
     extras: Record<string, unknown>,
   ): Promise<ChatResponse> {
+    return this.post(this.buildRequestBody(message, extras, threadId));
+  }
+
+  private buildRequestBody(
+    message: string,
+    extras: Record<string, unknown>,
+    threadId?: string,
+  ): Record<string, unknown> {
     const body: Record<string, unknown> = {
-      [this.inputField]: message,
       ...extras,
+      [this.inputField]: message,
     };
     if (threadId) {
       body[this.threadIdField] = threadId;
     }
-    return this.post(body);
+    return body;
+  }
+
+  private getPositiveIntConfig(key: string, fallback: number): number {
+    const value = parseInt(String(this.configService.get(key) ?? fallback), 10);
+    return Number.isFinite(value) && value > 0 ? value : fallback;
   }
 
   private parseResponse(text: string): ChatResponse {
@@ -71,7 +86,7 @@ export class BotClientService {
 
   private async post(body: Record<string, unknown>): Promise<ChatResponse> {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 60000);
+    const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
     try {
       const res = await fetch(this.endpointUrl, {
         method: 'POST',
@@ -83,6 +98,9 @@ export class BotClientService {
         signal: controller.signal,
       });
       const text = await res.text();
+      if (!res.ok) {
+        throw new Error(`Chatbot endpoint returned ${res.status}: ${text}`);
+      }
       return this.parseResponse(text);
     } finally {
       clearTimeout(timeout);
