@@ -16,6 +16,7 @@ ChatQA follows a simple workflow:
 
 This repository is a monorepo containing:
 
+- `api/src/modules/demo/`: Public demo endpoints for local testing workflows.
 - `api/`: NestJS backend for uploads, test execution, scoring, evaluations, personalities, jobs, logs, and auth.
 - `spa/`: React frontend for managing test sets and viewing results.
 
@@ -143,7 +144,7 @@ Minimal local setup:
 ```env
 MONGODB_URI=mongodb://localhost:27017/chatqa
 
-CHATBOT_URL=http://localhost:4000/chat
+CHATBOT_URL=http://localhost:3000/demo/mock-chatbot
 EVAL_API_KEY=your-chatbot-api-key
 
 OPENAI_API_KEY=your-openai-api-key
@@ -185,6 +186,7 @@ Default local URLs:
 - SPA: `http://localhost:5174`
 - API: `http://localhost:3000`
 - Health check: `http://localhost:3000/healthz`
+- Demo chatbot endpoint: `POST http://localhost:3000/demo/mock-chatbot`
 
 In development, the API enables CORS for `http://localhost:5173` and `http://localhost:5174`.
 
@@ -220,6 +222,38 @@ All variables live in the root `.env`.
 | `NODE_ENV` | `development` | Runtime environment |
 | `VITE_PORT` | `5174` | SPA dev and preview port |
 | `VITE_DISABLE_AUTH` | `false` | Skip login in the SPA for local development |
+
+## Local Mock Chatbot
+
+For demos and local testing, the API includes a public mock chatbot endpoint that follows the same basic contract as the target bot integration.
+
+Endpoint:
+
+```text
+POST /demo/mock-chatbot
+```
+
+Example request:
+
+```json
+{
+  "message": "What are your support hours?",
+  "threadId": "thread-123",
+  "project": "helpdesk",
+  "region": "AU"
+}
+```
+
+Example response:
+
+```json
+{
+  "answer": "Mock response for \"What are your support hours?\". Context received: project, region.",
+  "threadId": "thread-123"
+}
+```
+
+If `threadId` is omitted, the endpoint generates one automatically. Extra fields are ignored by the mock response logic, but they are detected so you can verify that ChatQA is sending spreadsheet context through to the chatbot layer.
 
 ### Auth Variables
 
@@ -277,6 +311,7 @@ Only needed when running with Microsoft auth enabled:
 - `GET /jobs/stream`
 - `GET /`
 - `GET /healthz`
+- `POST /demo/mock-chatbot`
 
 ## Development Notes
 

@@ -6,6 +6,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { CacheModule } from '@nestjs/cache-manager';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getAppVersion } from './utils/get-app-version';
+import { DemoModule } from './modules/demo/demo.module';
 import { HealthModule } from './modules/health/health.module';
 import { JobsModule } from './modules/jobs/jobs.module';
 import { ParseModule } from './modules/parse/parse.module';
@@ -59,6 +60,7 @@ import { AuthGuard } from './modules/users/guards/auth.guard';
     }),
 
     // Modules
+    DemoModule,
     HealthModule,
     JobsModule,
     ParseModule,
